@@ -6,11 +6,10 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
 
 ?>
 
-buprofeno se utiliza en personas adultas, para tratar dolores leves y moderados de origen dental, dolor de cabeza, dolor post quirúrgico, dolor asociado a afecciones musculoesqueléticas, entre otros. También se utiliza para aliviar procesos inflamatorios de tejidos blandos, para tratar síntomas de la osteoartritis (artrosis) y artritis reumatoide y para disminuir la temperatura en estados febriles.
-
 
 <!DOCTYPE html>
-<html lang= "es">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +17,8 @@ buprofeno se utiliza en personas adultas, para tratar dolores leves y moderados 
     <title>Farmacias EcoProducts</title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="css/estilos.css" rel="stylesheet">
 </head>
 
@@ -30,7 +30,8 @@ buprofeno se utiliza en personas adultas, para tratar dolores leves y moderados 
                 <a href="#" class="navbar-brand">
                     <strong>Farmacias EcoProducts</strong>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -56,7 +57,7 @@ buprofeno se utiliza en personas adultas, para tratar dolores leves y moderados 
                 <?php foreach($resultado as $row){ ?>
                 <div class="col">
                     <div class="card shadow-sm">
-                    <?php
+                        <?php
                         $id = $row['id'];
                         $imagen = "assets/images/productos/$id/imagen.jpg";
                         if (!file_exists($imagen)){
@@ -78,12 +79,14 @@ buprofeno se utiliza en personas adultas, para tratar dolores leves y moderados 
                 </div>
                 <?php } ?>
 
-                </div>
             </div>
+        </div>
         </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
 
 </body>
 
