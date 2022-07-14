@@ -9,6 +9,7 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
 
 
 
+
 <!DOCTYPE html>
 <html lang= "es">
 <head>
@@ -52,34 +53,7 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
     <!--Contenido-->
     <main>
         <div class="container">
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <?php foreach($resultado as $row){ ?>
-                <div class="col">
-                    <div class="card shadow-sm">
-                    <?php
-                        $id = $row['id'];
-                        $imagen = "assets/images/productos/$id/imagen.jpg";
-                        if (!file_exists($imagen)){
-                            $imagen = "assets/images/not_found.jpg";
-                        }
-                        ?>
-                        <img src="<?php echo $imagen;?>">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo $row['nombre'] ?></h5>
-                            <p class="card-text">$<?php echo $row['precio']; ?></p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <a href="#" class="btn btn-primary">Detalles</a>
-                                </div>
-                                <a href="#" class="btn btn-success">Agregar</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php } ?>
-
-                </div>
-            </div>
+           
         </div>
     </main>
 
