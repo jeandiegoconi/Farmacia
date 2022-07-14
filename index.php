@@ -1,4 +1,17 @@
+<?php
+require "config/conectar.php";
+$sql = $conn -> prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
+$sql -> execute();
+$resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
 
+?>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang= "es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
