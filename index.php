@@ -6,7 +6,7 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
 
 ?>
 
-
+buprofeno se utiliza en personas adultas, para tratar dolores leves y moderados de origen dental, dolor de cabeza, dolor post quirúrgico, dolor asociado a afecciones musculoesqueléticas, entre otros. También se utiliza para aliviar procesos inflamatorios de tejidos blandos, para tratar síntomas de la osteoartritis (artrosis) y artritis reumatoide y para disminuir la temperatura en estados febriles.
 
 
 <!DOCTYPE html>
