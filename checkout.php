@@ -108,8 +108,8 @@ if($productos != NULL){
                                 <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]">$<?php echo $subtotal ?>
                                 </div>
                             </td>
-                            <td><a id="delete" class="btn btn-warning btn-sm" data-bs-id="<?php echo
-                            $_id; ?>" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</a></td>
+                            <td><a href="#" id="delete" class="btn btn-warning btn-sm" data-bs-id="<?php
+                            $_id; ?>" data-ds-toggle="modal" data-bs-target="deletemodal">Eliminar</a></td>
                         </tr>
                         <?php } ?>
 
@@ -128,25 +128,6 @@ if($productos != NULL){
                     <button class="btn btn-primary btn-lg">Realizar pago</button>
                 </div>
     </main>
-
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModal">Alerta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ¿Desea eliminar el producto del carrito?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button id="btn-delete" type="button" class="btn btn-danger" onclick="deleteItem()">Eliminar</button>
-      </div>
-    </div>
-  </div>
-</div>
 
     <script src="js/cantidadCarrito.js"></script>
 
