@@ -7,7 +7,7 @@ $id = isset($_GET["id"]) ? $_GET["id"] : " " ;
 $token = isset($_GET["token"]) ? $_GET["token"] : " ";
 
 if($id == '' || $token == '' ){
-    echo "Error al procesar la petición";
+    echo "Error";
     exit;
 } else{
 
@@ -29,7 +29,7 @@ if($id == '' || $token == '' ){
 
         }
     } else {
-        echo "Error al procesar la peticion";
+        echo "Error";
         exit;
     }
 
@@ -80,7 +80,9 @@ $get_dir = "assets/images/productos/$id/imagen.jpg"
                             <a href="#" class="nav-link">Contacto</a>
                         </li>
                     </ul>
-                    <a href="carrito.php" class="btn btn-primary">Carrito</a>
+                    <a href="classes/carrito.php" class="btn btn-primary">
+                        Carrito<span id="num_carr" class="badge bd-secondary"><?php echo $num_carr; ?></span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -102,16 +104,21 @@ $get_dir = "assets/images/productos/$id/imagen.jpg"
 
                     <div class="d-grid gap-3 col-10 mx-auto">
                         <button class="btn btn-primary" type="button">Comprar ahora</button>
-                        <button class="btn btn-outline-primary" type="button">Agregar al carrito</button>
+                        <button class="btn btn-outline-primary" type="button"
+                            onclick="carritoproducto(<?php echo $id; ?>,'<?php echo $token_tmp;?>')">
+                            Agregar al carrito</button>
 
                     </div>
                 </div>
             </div>
     </main>
 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+
+    <script src="js/carritoproducto.js"></script>
 
 </body>
 
