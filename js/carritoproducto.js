@@ -1,4 +1,4 @@
-function carritoproducto(id, token) {
+function carritoProducto(id, token) {
     let url = 'classes/carrito.php'
     let formData = new FormData()
     formData.append('id', id)
