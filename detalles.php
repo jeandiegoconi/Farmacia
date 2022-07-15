@@ -1,13 +1,46 @@
 <?php
+
+require "config/config.php";
 require "config/conectar.php";
+
+$id = isset($_GET["id"]) ? $_GET["id"] : " " ;
+$token = isset($_GET["token"]) ? $_GET["token"] : " ";
+
+if($id == '' || $token == '' ){
+    echo "Error al procesar la petición";
+    exit;
+} else{
+
+    $token_tmp = hash_hmac("sha1" , $id, KEY_TOKEN);
+
+    if ($token == $token_tmp) {
+
+        $sql = $conn-> prepare("SELECT count(id) FROM productos WHERE id=? AND activo=1 ");
+        $sql -> execute([$id]);
+        if ($sql->fetchColumn() > 0) {
+
+            $sql = $conn ->prepare("SELECT nombre, descripcion, precio FROM productos WHERE id=? AND activo=1 LIMIT 1 ");
+            $sql->execute([$id]);
+            $row = $sql ->fetch(PDO::FETCH_ASSOC);
+            $nombre = $row["nombre"];
+            $descripcion = $row["descripcion"];
+            $precio = $row["precio"];
+            
+
+        }
+    } else {
+        echo "Error al procesar la peticion";
+        exit;
+    }
+
+}
+
 $sql = $conn -> prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
 $sql -> execute();
 $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
+$get_dir = "assets/images/productos/$id/imagen.jpg"
 
 ?>
-
-
-
 
 
 <!DOCTYPE html>
@@ -56,8 +89,24 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
     <!--Contenido-->
     <main>
         <div class="container">
+            <div class="row">
+                <div class="col-md-6 order-md-1">
+                    <img src="<?php echo $get_dir?>" class="d-block w-100">
+                </div>
+                <div class="col-md-6 order-md-2">
+                    <h2><?php echo $nombre; ?></h2>
+                    <h2> <?php echo "Precio: ". "$".$precio; ?></h2>
+                    <p class="lead">
+                        <?php echo $descripcion; ?>
+                    </p>
 
-        </div>
+                    <div class="d-grid gap-3 col-10 mx-auto">
+                        <button class="btn btn-primary" type="button">Comprar ahora</button>
+                        <button class="btn btn-outline-primary" type="button">Agregar al carrito</button>
+
+                    </div>
+                </div>
+            </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
