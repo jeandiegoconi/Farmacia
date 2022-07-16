@@ -63,7 +63,7 @@ $get_dir = "assets/images/productos/$id/imagen.jpg"
     <header>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a href="#" class="navbar-brand">
+                <a href="./index.php" class="navbar-brand">
                     <strong>Farmacias EcoProducts</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"

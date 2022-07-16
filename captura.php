@@ -1,15 +1,83 @@
 <?php
 
-$payment = $_GET['payment_id'];
+require 'config/config.php';
+require 'config/conectar.php';
+
+
+$payment_id = $_GET['payment_id'];
 $status = $_GET['status'];
 $payment_type = $_GET['payment_type'];
 $order_id = $_GET['merchant_order_id'];
-
-echo "<h3>Pago Exitoso</h3>";
-
-echo $payment. '<br>';
-echo $status. '<br>';
-echo $payment_type. '<br>';
-echo $order_id. '<br>';
-
 ?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmacias EcoProducts</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="css/estilos.css" rel="stylesheet">
+</head>    
+<!--Barra de navegación-->
+    <header>
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a href="./index.php" class="navbar-brand">
+                    <strong>Farmacias EcoProducts</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarHeader">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">Catalogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Contacto</a>
+                        </li>
+                    </ul>
+                    <a href="checkout.php" class="btn btn-primary">
+                        Carrito<span id="num_carr" class="badge bd-secondary"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+       <!--Contenido-->
+       <main>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-6">
+                    <h4>Detalles de pago</h4>
+                    <div class="cho-container"></div>
+                </div>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+<?php
+
+echo "<h4 class='text-center'>Pago Exitoso</h4>";
+
+echo "<p class='text-center'>ID de Usuario: ", $payment_id. '</p>';
+echo "<p class='text-center'>Estado: ",$status. '</p>';
+echo "<p class='text-center'>Tipo de Pago: ",$payment_type. '</p>';
+echo "<p class='text-center' class= 'text-lg'>ID de Orden: ",$order_id. '</p>';
+unset($_SESSION['carrito']);
+?>
+</html>
