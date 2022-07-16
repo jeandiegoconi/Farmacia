@@ -1,6 +1,14 @@
 <?php
 require "config/config.php";
 require "config/conectar.php";
+require __DIR__ .  '/vendor/autoload.php';
+
+MercadoPago\SDK::setAccessToken(TOKEN_MP);
+
+$preference = new MercadoPago\Preference();
+
+$productos_mp = array();
+
 
 
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : NULL;
@@ -17,6 +25,9 @@ if($productos != NULL){
         $sql -> execute([$clave]);
         $listacarrito[] = $sql -> fetch(PDO::FETCH_ASSOC);
     }
+} else{
+    header("Location: index.php");
+    exit;
 }
 
 ?>
@@ -35,6 +46,10 @@ if($productos != NULL){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="css/estilos.css" rel="stylesheet">
+
+
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+
 </head>
 
 <body>
@@ -70,19 +85,26 @@ if($productos != NULL){
     <!--Contenido-->
     <main>
         <div class="container">
-            <div class="table-response">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>SubTotal</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if ($listacarrito == NULL){
+
+            <div class="row">
+                <div class="col-6">
+                    <h4>Detalles de pago</h4>
+                    <div class="cho-container"></div>
+                </div>
+
+
+                <div class="col-6">
+                    <div class="table-response">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>SubTotal</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if ($listacarrito == NULL){
 
                         echo '<tr><td colspan="5" class="text-center"><b>Vacio</b></td></tr>';
 
@@ -95,68 +117,74 @@ if($productos != NULL){
                             $cantidad = $producto['cantidad'];
                             $subtotal = $cantidad * $precio;
                             $total += $subtotal;
-                    ?>
-                        <tr>
-                            <td><?php echo $nombre ?></td>
-                            <td><?php echo '$', $precio ?></td>
-                            <td>
-                                <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad ?>" size="5"
-                                    id="cantidad_<?php echo $_id; ?>"
-                                    onchange="cantidadCarrito(this.value,<?php echo $_id;?>)">
-                            </td>
-                            <td>
-                                <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]">$<?php echo $subtotal ?>
-                                </div>
-                            </td>
-                            <td><a id="delete" class="btn btn-warning btn-sm" data-bs-id="<?php echo
-                            $_id; ?>" data-bs-toggle="modal" data-bs-target="#deleteModal">Eliminar</a></td>
-                        </tr>
-                        <?php } ?>
 
-                        <tr>
-                            <td colspan="3"></td>
-                            <td colspan="2">
-                                <p class="h3" id="total"><?php echo '$', $total ?></p>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <?php } ?>
-                </table>
-            </div>
-            <?php if ($listacarrito != NULL){?>
-            <div class="row">
-                <div class="col-md-5 offfset-md-7 d-grid gap-2">
-                    <a href="pago.php" class="btn btn-primary btn-lg">Realizar pago</a>
+                            $item = new MercadoPago\Item();
+                            $item->id =$_id;
+                            $item->title =  $nombre;
+                            $item->quantity = $cantidad;
+                            $item->unit_price = $precio;
+                            $item->currency_id = "CLP";
+
+                            array_push($productos_mp, $item);
+                            unset($item);
+                    ?>
+                                <tr>
+                                    <td><?php echo $nombre ?></td>
+
+                                    <td>
+                                        <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]">
+                                            $<?php echo $subtotal ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php } ?>
+
+                                <tr>
+                                    <td colspan="2">
+                                        <p class="h3 text-end" id="total"><?php echo '$', $total ?></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <?php } ?>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <?php }?>
+        </div>
+        </div>
     </main>
+    <?php
 
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModal">Alerta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ¿Desea eliminar el producto del carrito?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button id="btn-delete" type="button" class="btn btn-danger" onclick="deleteItem()">Eliminar</button>
-      </div>
-    </div>
-  </div>
-</div>
+        $preference->items = $productos_mp;
+        $preference->back_urls = array(
+            "success" => "http://localhost/web/captura.php",
+            "failure" => "http://localhost/web/failure.php"
+        );
+        $preference->save();        
+        ?>
 
-    <script src="js/cantidadCarrito.js"></script>
+    <script>
+    // Agrega credenciales de SDK
+    const mp = new MercadoPago("TEST-d09dc0d5-2e4e-42c7-8462-4b89b923d70c", {
+        locale: "es-CL",
+    });
 
-
+    // Inicializa el checkout
+    mp.checkout({
+        preference: {
+            id: "<?php echo $preference->id; ?>",
+        },
+        render: {
+            container: ".cho-container", // Indica el nombre de la clase donde se mostrará el botón de pago
+            label: "Pagar con MercadoPago", // Cambia el texto del botón de pago (opcional)
+        },
+    });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
+
+
 
 </body>
 
