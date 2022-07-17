@@ -8,6 +8,14 @@ $payment_id = $_GET['payment_id'];
 $status = $_GET['status'];
 $payment_type = $_GET['payment_type'];
 $order_id = $_GET['merchant_order_id'];
+
+
+
+$sql = $conn -> prepare("INSERT INTO compra (id_compra, estado, tipo_pago , order_id) VALUES($payment_id,'$status','$payment_type',$order_id)");
+$sql -> execute();
+$id = $conn ->lastInsertId();
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
