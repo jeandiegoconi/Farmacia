@@ -68,7 +68,7 @@ if (isset($_POST)) {
                             <td><?php echo $row['categoria']; ?></td>
                             <td>
                                 <form method="post"
-                                    action="modificarCategoriasAccion.php?accion=cat&id=<?php echo $row['id']; ?>"
+                                    action="modificarCategoriasAccion.php?accion=cat&id=<?php echo $row['id']; ?>&categoria=<?php echo$row['categoria']?>"
                                     class="d-inline modificar">
                                     <button class="btn btn-secondary" type="submit">Modificar</button>
                                 </form>
@@ -81,7 +81,6 @@ if (isset($_POST)) {
         </div>
     </div>
     </div>
-    <a class="btn btn-secondary" href="productos.php" role="button">Productos</a>
     <a class="btn btn-secondary" href="categorias.php" role="button">Categorias</a>
 </body>
 

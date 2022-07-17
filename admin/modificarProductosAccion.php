@@ -3,6 +3,7 @@
 
 
 if (isset($_GET)) {
+    !unlink("../assets/images/productos/".$_GET['imagen']);
     if (!empty($_GET['accion']) && !empty($_GET['id'])) {
         require_once "../config/conectar.php";
         $id = $_GET['id'];
@@ -18,11 +19,14 @@ if (isset($_GET)) {
             $foto = $fecha . ".jpg";
             $destino = "../assets/images/productos/" . $foto;
             $activo = $_POST['activo'];
+
+            
             $sql = $conn ->prepare("UPDATE productos SET nombre = '$nombre', descripcion = '$descripcion',  precio = $precio, imagen = '$foto', id_categoria = $categoria, activo = $activo WHERE id = '$id';");
             $sql->execute();
             if ($sql) {
                 if (move_uploaded_file($tmpname, $destino)) {
                     header('Location: productos.php');
+                    
                 }
                 header('Location: modificarProductos.php');
             }
@@ -59,7 +63,7 @@ if (isset($_GET)) {
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
                                     <input id="nombre" class="form-control" type="text" name="nombre"
-                                        placeholder="Nombre" required>
+                                        value="<?php echo $_GET['nombre'];?>" required>
                                 </div>
                             </div>
 
@@ -67,14 +71,14 @@ if (isset($_GET)) {
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
                                     <textarea id="descripcion" class="form-control" name="descripcion"
-                                        placeholder="Descripción" rows="3" required></textarea>
+                                     rows="3" required><?php echo $_GET['descripcion'];?></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="precio">Precio</label>
                                     <input id="precio" class="form-control" type="text" name="precio"
-                                        placeholder="Precio" required>
+                                        value= "<?php echo $_GET['precio'];?>" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -99,7 +103,7 @@ if (isset($_GET)) {
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="action" >Producto Activo: </label>
+                                    <label for="action">Producto Activo: </label>
                                     <input type="radio" name="activo" id="activo" value="1" <?php 
                                         if($_GET["activo"] == 1){echo "checked";}?>>
                                     <label for="activo">Activo</label>

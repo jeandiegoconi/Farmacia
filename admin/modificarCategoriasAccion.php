@@ -48,7 +48,7 @@ if (isset($_GET)) {
                                 <div class="form-group">
                                     <label for="nombre">Nombre</label>
                                     <input id="categoria" class="form-control" type="text" name="categoria"
-                                        placeholder="Nombre" required>
+                                    value="<?php echo $_GET['categoria'];?>" required>
                                 </div>
                             <button class="btn btn-primary" type="submit">Modificar</button>
                     </form>

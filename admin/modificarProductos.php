@@ -79,8 +79,9 @@ if (isset($_POST)) {
                             <td><?php echo $row['precio']; ?></td>
                             <td><?php echo $row['categoria']; ?></td>
                             <td>
-                                <form method="post" action="modificarProductosAccion.php?accion=pro&id=<?php echo $row['id']; ?>&activo=<?php echo $row['activo'];?>"
-                                    class="d-inline eliminar">
+                                <form method="post"
+                                    action="modificarProductosAccion.php?accion=pro&id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre'];?>&descripcion=<?php echo $row['descripcion'];?>&precio=<?php echo $row['precio'] ?>&imagen=<?php echo $row['imagen'] ?>&activo=<?php echo $row['activo'];?>"
+                                    class="d-inline modificar">
                                     <button class="btn btn-secondary" type="submit">Modificar</button>
                                 </form>
                             </td>
@@ -152,7 +153,6 @@ if (isset($_POST)) {
         </div>
     </div>
     <a class="btn btn-secondary" href="productos.php" role="button">Productos</a>
-    <a class="btn btn-secondary" href="categorias.php" role="button">Categorias</a>
 </body>
 
 </html>
