@@ -11,6 +11,7 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
 <html lang="es">
 
 <head>
+    <link rel="icon" type="image/png" href="assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,11 +74,11 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="detalles.php?id=<?php echo $row["id"]; ?>&token=<?php echo
-                                    hash_hmac('sha1' , $row['id'], KEY_TOKEN); ?>"       class="btn btn-primary">Detalles</a>
+                                    hash_hmac('sha1' , $row['id'], KEY_TOKEN); ?>" class="btn btn-primary">Detalles</a>
                                 </div>
-                                <button class="btn btn-outline-success" type="button" onclick=
-                                "carritoProducto(<?php echo $row['id']; ?>,'<?php echo hash_hmac('sha1' , $row['id'], KEY_TOKEN); ?>')">
-                        Agregar al carrito</button>
+                                <button class="btn btn-outline-success" type="button"
+                                    onclick="carritoProducto(<?php echo $row['id']; ?>,'<?php echo hash_hmac('sha1' , $row['id'], KEY_TOKEN); ?>')">
+                                    Agregar al carrito</button>
                             </div>
                         </div>
                     </div>
@@ -87,9 +88,14 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
             </div>
         </div>
         </div>
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">Farmacias EcoProductos</p>
+            </div>
+        </footer>
     </main>
 
-    <script src = "js/carritoProducto.js"></script>
+    <script src="js/carritoProducto.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>

@@ -47,6 +47,7 @@ $get_dir = "assets/images/productos/$imagen"
 <html lang="es">
 
 <head>
+    <link rel="icon" type="image/png" href="assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -120,5 +121,10 @@ $get_dir = "assets/images/productos/$imagen"
     <script src="js/carritoProducto.js"></script>
 
 </body>
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Farmacias EcoProductos</p>
+    </div>
+</footer>
 
 </html>

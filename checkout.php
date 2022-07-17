@@ -25,6 +25,7 @@ if($productos != NULL){
 <html lang="es">
 
 <head>
+    <link rel="icon" type="image/png" href="assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -131,24 +132,25 @@ if($productos != NULL){
             <?php }?>
     </main>
 
-<!-- Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="deleteModal">Alerta</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ¿Desea eliminar el producto del carrito?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button id="btn-delete" type="button" class="btn btn-danger" onclick="deleteItem()">Eliminar</button>
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModal">Alerta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Desea eliminar el producto del carrito?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btn-delete" type="button" class="btn btn-danger"
+                        onclick="deleteItem()">Eliminar</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
     <script src="js/cantidadCarrito.js"></script>
 
@@ -158,5 +160,10 @@ if($productos != NULL){
     </script>
 
 </body>
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Farmacias EcoProductos</p>
+    </div>
+</footer>
 
 </html>

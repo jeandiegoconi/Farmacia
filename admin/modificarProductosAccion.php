@@ -40,6 +40,7 @@ if (isset($_GET)) {
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image/png" href="../assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,15 +71,15 @@ if (isset($_GET)) {
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="descripcion">Descripción</label>
-                                    <textarea id="descripcion" class="form-control" name="descripcion"
-                                     rows="3" required><?php echo $_GET['descripcion'];?></textarea>
+                                    <textarea id="descripcion" class="form-control" name="descripcion" rows="3"
+                                        required><?php echo $_GET['descripcion'];?></textarea>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="precio">Precio</label>
                                     <input id="precio" class="form-control" type="text" name="precio"
-                                        value= "<?php echo $_GET['precio'];?>" required>
+                                        value="<?php echo $_GET['precio'];?>" required>
                                 </div>
                             </div>
                             <div class="col-md-6">

@@ -28,6 +28,7 @@ if (isset($_POST)) {
 <html lang="en">
 
 <head>
+    <link rel="icon" type="image/png" href="../assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,6 +154,7 @@ if (isset($_POST)) {
         </div>
     </div>
     <a class="btn btn-secondary" href="productos.php" role="button">Productos</a>
+    <a class="btn btn-danger float-end" href="cerrarSesion.php" role="button">Salir</a>
 </body>
 
 </html>
