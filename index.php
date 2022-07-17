@@ -1,7 +1,7 @@
 <?php
 require "config/config.php";
 require "config/conectar.php";
-$sql = $conn -> prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
+$sql = $conn -> prepare("SELECT id, nombre, precio, imagen FROM productos WHERE activo=1");
 $sql -> execute();
 $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
 ?>
@@ -60,8 +60,8 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
                 <div class="col">
                     <div class="card shadow-sm">
                         <?php
-                        $id = $row['id'];
-                        $imagen = "assets/images/productos/$id/imagen.jpg";
+                        $id = $row['imagen'];
+                        $imagen = "assets/images/productos/$id";
                         if (!file_exists($imagen)){
                             $imagen = "assets/images/not_found.jpg";
                         }

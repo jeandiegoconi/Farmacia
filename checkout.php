@@ -2,7 +2,6 @@
 require "config/config.php";
 require "config/conectar.php";
 
-
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : NULL;
 
 
@@ -42,7 +41,7 @@ if($productos != NULL){
     <header>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a href="#" class="navbar-brand">
+                <a href="./index.php" class="navbar-brand">
                     <strong>Farmacias EcoProducts</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"

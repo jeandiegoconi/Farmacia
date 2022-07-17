@@ -19,13 +19,13 @@ if($id == '' || $token == '' ){
         $sql -> execute([$id]);
         if ($sql->fetchColumn() > 0) {
 
-            $sql = $conn ->prepare("SELECT nombre, descripcion, precio FROM productos WHERE id=? AND activo=1 LIMIT 1 ");
+            $sql = $conn ->prepare("SELECT nombre, descripcion, precio, imagen FROM productos WHERE id=? AND activo=1 LIMIT 1 ");
             $sql->execute([$id]);
             $row = $sql ->fetch(PDO::FETCH_ASSOC);
             $nombre = $row["nombre"];
             $descripcion = $row["descripcion"];
             $precio = $row["precio"];
-            
+            $imagen = $row["imagen"];
 
         }
     } else {
@@ -35,10 +35,10 @@ if($id == '' || $token == '' ){
 
 }
 
-$sql = $conn -> prepare("SELECT id, nombre, precio FROM productos WHERE activo=1");
+$sql = $conn -> prepare("SELECT id, nombre, precio,imagen FROM productos WHERE activo=1");
 $sql -> execute();
 $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
-$get_dir = "assets/images/productos/$id/imagen.jpg"
+$get_dir = "assets/images/productos/$imagen"
 
 ?>
 
@@ -103,7 +103,6 @@ $get_dir = "assets/images/productos/$id/imagen.jpg"
                     </p>
 
                     <div class="d-grid gap-3 col-10 mx-auto">
-                        <button class="btn btn-primary" type="button">Comprar ahora</button>
                         <button class="btn btn-outline-primary" type="button"
                             onclick="carritoProducto(<?php echo $id; ?>,'<?php echo $token_tmp;?>')">
                             Agregar al carrito</button>
