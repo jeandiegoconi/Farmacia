@@ -158,8 +158,8 @@ if($productos != NULL){
 
         $preference->items = $productos_mp;
         $preference->back_urls = array(
-            "success" => "http://localhost/web/view/captura.php",
-            "failure" => "http://localhost/web/view/failure.php"
+            "success" => "http://localhost/Farmacia/view/captura.php",
+            "failure" => "http://localhost/Farmacia/view/failure.php"
         );
         $preference->save();        
         ?>
