@@ -1,21 +1,36 @@
 
-
 CREATE DATABASE `ecoproducts`;
 USE `ecoproducts`;
-
 
 
 CREATE TABLE `administradores` (
   `id` int(11) NOT NULL,
   `usuario` varchar(20) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `clave` varchar(100)  NOT NULL
+  `clave` varchar(100) NOT NULL
 );
-
-
 
 INSERT INTO `administradores` (`id`, `usuario`, `nombre`, `clave`) VALUES
 (1, 'admin', 'Diego', '21232f297a57a5a743894a0e4a801fc3');
+
+
+CREATE TABLE `carro` (
+  `id_carrito` int(11) NOT NULL,
+  `id_orden` double NOT NULL,
+  `id_producto` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `precio` double NOT NULL
+);
+
+
+INSERT INTO `carro` (`id_carrito`, `id_orden`, `id_producto`, `nombre`, `cantidad`, `precio`) VALUES
+(13, 5240403586, 32, 'Propolis x 60 comprimidos', 1, 6990),
+(14, 5240403586, 9, ' Tapsin Plus Noche Paracetamol 650 mg Solución Oral 1 Sobre ', 1, 690),
+(15, 5240403586, 35, 'Mintavit-C Acido Ascorbico 100 mg 100 Comprimido', 1, 1990),
+(16, 5240403586, 34, 'Mascarilla Desechable Plana 3 Unidades', 1, 990),
+(17, 5240403586, 36, 'Shampoo Manzana Fresh 400 mL', 6, 25794),
+(18, 5240469146, 32, 'Propolis x 60 comprimidos', 18, 125820);
 
 
 
@@ -24,11 +39,13 @@ CREATE TABLE `categorias` (
   `categoria` varchar(50) NOT NULL
 );
 
+
 INSERT INTO `categorias` (`id`, `categoria`) VALUES
 (1, 'Medicamentos'),
 (2, 'Cuidado Personal'),
 (7, 'Crónicos'),
 (9, ' Vitaminas y Minerales');
+
 
 
 CREATE TABLE `compra` (
@@ -44,19 +61,21 @@ CREATE TABLE `compra` (
 
 
 INSERT INTO `compra` (`id_usuario`, `id_compra`, `estado`, `tipo_pago`, `fecha_pago`, `order_id`, `total`, `entregado`) VALUES
-(65, 1297496036, 'approved', 'credit_card', '2022-07-18 21:12:01', 5238940745, 0, 0),
-(67, 1297493197, 'approved', 'credit_card', '2022-07-18 21:14:52', 5238977129, 38951, 1);
+(78, 1297493922, 'approved', 'credit_card', '2022-07-18 23:42:39', 5240403586, 36454, 1),
+(79, 1297557973, 'approved', 'credit_card', '2022-07-18 23:48:27', 5240469146, 125820, 0);
+
 
 
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `nombre` varchar(150) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `precio` int(10) NOT NULL,
-  `imagen` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `imagen` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `activo` int(11) NOT NULL
 );
+
 
 INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `id_categoria`, `activo`) VALUES
 (9, ' Tapsin Plus Noche Paracetamol 650 mg Solución Oral 1 Sobre ', 'Rápido alivio de los síntomas de la gripe y el resfrío común, la gripe y la congestión, indicado incluso como antigripal en casos de intolerancia o alergia al ácido acetilsalicílico. ', 690, '20220718192834.jpg', 1, 1),
@@ -70,25 +89,29 @@ INSERT INTO `productos` (`id`, `nombre`, `descripcion`, `precio`, `imagen`, `id_
 (40, 'Elcal Flex Colageno Hidrolizado Polvo Suspension Oral 30 Sobres', 'Elcal Flex se presenta en forma de polvo para suspensión oral en sobre.', 19990, '20220718194805.jpg', 1, 1);
 
 
-
 ALTER TABLE `administradores`
   ADD PRIMARY KEY (`id`);
+
+
+ALTER TABLE `carro`
+  ADD PRIMARY KEY (`id_carrito`);
 
 
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
-
 ALTER TABLE `compra`
   ADD PRIMARY KEY (`id_usuario`);
-
 
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`);
 
-
 ALTER TABLE `administradores`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+
+ALTER TABLE `carro`
+  MODIFY `id_carrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 
 ALTER TABLE `categorias`
@@ -96,8 +119,8 @@ ALTER TABLE `categorias`
 
 
 ALTER TABLE `compra`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
-
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 ALTER TABLE `productos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+COMMIT;

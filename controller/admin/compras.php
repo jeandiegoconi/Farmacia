@@ -61,6 +61,12 @@ require_once "../../model/conectar.php";
                             $resEntrega = '<td class = "table-danger">No Entregado';}?>
                         <?php echo $resEntrega; ?></td>
                         <td>
+                            <form method="post" action="detalles.php?accion=pro&id=<?php echo $row['order_id'];?>"
+                                class="d-inline modificar">
+                                <button class="btn btn-primary" type="submit">Detalles</button>
+                            </form>
+                        </td>
+                        <td>
                             <form method="post"
                                 action="modificarCompras.php?accion=pro&id=<?php echo $row['id_usuario'];?>&entregado=<?php echo $row['entregado'];?>"
                                 class="d-inline modificar">

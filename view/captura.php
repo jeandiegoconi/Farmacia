@@ -119,7 +119,9 @@ echo "<p class='text-center text-white'>Productos: ",$nombre. '</p>';
 echo "<p class='text-center text-white'>Cantidad: ",$cantidad. '</p>;
 
 
-    </div>';}
+    </div>';
+    $carro = $conn->prepare("INSERT INTO CARRO (id_orden,id_producto,nombre,cantidad,precio) values ($id_orden,$_id,'$nombre',$cantidad,$subtotal)");
+    $carro ->execute(); }
 echo "<p class='text-center text-white'>Total: ",$total. '</p>';
 unset($_SESSION['carrito']);
 ?>
