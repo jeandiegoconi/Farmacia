@@ -99,7 +99,7 @@ if($productos != NULL){
                             <td><?php echo $nombre ?></td>
                             <td><?php echo '$', $precio ?></td>
                             <td>
-                                <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad ?>" size="5"
+                                <input onkeypress="return false;" type="number" min="1" max="10" step="1" value="<?php echo $cantidad ?>" size="5"
                                     id="cantidad_<?php echo $_id; ?>"
                                     onchange="cantidadCarrito(this.value,<?php echo $_id;?>)">
                             </td>
