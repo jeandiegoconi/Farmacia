@@ -1,7 +1,7 @@
 <?php
 
-require '../config/config.php';
-require '../config/conectar.php';
+require '../../model/config.php';
+require '../../model/conectar.php';
 
 if(isset($_POST['action'])){
     
@@ -38,7 +38,7 @@ function agregar($id,$cantidad){
         if(isset($_SESSION['carrito']['productos'][$id])){
             $_SESSION['carrito']['productos'][$id] = $cantidad;
             
-                $conn = new PDO("mysql:host=$servername;dbname=tienda", $username, $password);
+                $conn = new PDO("mysql:host=$servername;dbname=ecoproducts", $username, $password);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $sql = $conn->prepare("SELECT precio FROM productos WHERE id=? AND activo=1 LIMIT 1");
                 $sql->execute([$id]);

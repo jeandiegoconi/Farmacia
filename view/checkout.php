@@ -1,6 +1,6 @@
 <?php
-require "config/config.php";
-require "config/conectar.php";
+require "../model/config.php";
+require "../model/conectar.php";
 
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : NULL;
 
@@ -25,7 +25,7 @@ if($productos != NULL){
 <html lang="es">
 
 <head>
-    <link rel="icon" type="image/png" href="assets/icon.png" />
+    <link rel="icon" type="image/png" href="../assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,7 @@ if($productos != NULL){
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="css/estilos.css" rel="stylesheet">
+    <link href="../css/estilos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -42,7 +42,7 @@ if($productos != NULL){
     <header>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a href="./index.php" class="navbar-brand">
+                <a href="../index.php" class="navbar-brand">
                     <strong>Farmacias EcoProducts</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
@@ -53,13 +53,13 @@ if($productos != NULL){
                 <div class="collapse navbar-collapse" id="navbarHeader">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">Catalogo</a>
+                            <a href="../index.php" class="nav-link active">Catalogo</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Contacto</a>
                         </li>
                     </ul>
-                    <a href="classes/carrito.php" class="btn btn-primary">
+                    <a href="checkout.php" class="btn btn-primary">
                         Carrito<span id="num_carr" class="badge bd-secondary"><?php echo $num_carr; ?></span>
                     </a>
                 </div>
@@ -70,8 +70,8 @@ if($productos != NULL){
     <!--Contenido-->
     <main>
         <div class="container">
-            <div class="table-response">
-                <table class="table">
+            <div class="table-response ">
+                <table class="table text-white">
                     <thead>
                         <tr>
                             <th>Producto</th>
@@ -130,29 +130,30 @@ if($productos != NULL){
                 </div>
             </div>
             <?php }?>
-    </main>
 
-    <!-- Modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModal">Alerta</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ¿Desea eliminar el producto del carrito?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button id="btn-delete" type="button" class="btn btn-danger"
-                        onclick="deleteItem()">Eliminar</button>
+            <!-- Modal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModal">Alerta</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ¿Desea eliminar el producto del carrito?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                            <button id="btn-delete" type="button" class="btn btn-danger"
+                                onclick="deleteItem()">Eliminar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+    </main>
 
-    <script src="js/cantidadCarrito.js"></script>
+
+    <script src="../js/cantidadCarrito.js"></script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

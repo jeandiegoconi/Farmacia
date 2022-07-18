@@ -3,9 +3,9 @@
 
 
 if (isset($_GET)) {
-    !unlink("../assets/images/productos/".$_GET['imagen']);
+    !unlink("../../assets/images/productos/".$_GET['imagen']);
     if (!empty($_GET['accion']) && !empty($_GET['id'])) {
-        require_once "../config/conectar.php";
+        require_once "../../model/conectar.php";
         $id = $_GET['id'];
         if ($_POST) {
             $nombre = $_POST['nombre'];
@@ -17,7 +17,7 @@ if (isset($_GET)) {
             $tmpname = $img['tmp_name'];
             $fecha = date("YmdHis");
             $foto = $fecha . ".jpg";
-            $destino = "../assets/images/productos/" . $foto;
+            $destino = "../../assets/images/productos/" . $foto;
             $activo = $_POST['activo'];
 
             
@@ -40,7 +40,7 @@ if (isset($_GET)) {
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/png" href="../assets/icon.png" />
+    <link rel="icon" type="image/png" href="../../assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -4,7 +4,7 @@
 
 if (isset($_GET)) {
     if (!empty($_GET['accion']) && !empty($_GET['id'])) {
-        require_once "../config/conectar.php";
+        require_once "../../model/conectar.php";
         $id = $_GET['id'];
         if ($_POST) {
             $categoria = $_POST['categoria'];
@@ -27,7 +27,7 @@ if (isset($_GET)) {
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/png" href="../assets/icon.png" />
+    <link rel="icon" type="image/png" href="../../assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,8 +36,6 @@ if (isset($_GET)) {
 </head>
 
 <body>
-
-
     <div id="modificar" class="mb-3" tabindex="-1">
         <div class="dialog">
             <div class="modal-content">

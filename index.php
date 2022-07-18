@@ -1,6 +1,6 @@
 <?php
-require "config/config.php";
-require "config/conectar.php";
+require "model/conectar.php";
+require "model/config.php";
 $sql = $conn -> prepare("SELECT id, nombre, precio, imagen FROM productos WHERE activo=1");
 $sql -> execute();
 $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
@@ -26,6 +26,7 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
 <body>
     <!--Barra de navegación-->
     <header>
+
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a href="index.php" class="navbar-brand">
@@ -37,29 +38,29 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarHeader">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">Catalogo</a>
+                            <a href="../index.php" class="nav-link active">Catalogo</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Contacto</a>
                         </li>
                     </ul>
-                    <a href="checkout.php" class="btn btn-primary">
+                    <a href="./view/checkout.php" class="btn btn-primary">
                         Carrito<span id="num_carr" class="badge bd-secondary"><?php echo $num_carr; ?></span>
                     </a>
                 </div>
             </div>
         </div>
-    </header>
 
     <!--Contenido-->
+
     <main>
         <div class="container">
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <?php foreach($resultado as $row){ ?>
                 <div class="col">
-                    <div class="card shadow-sm">
+                    <div class="card text-white bg-dark mb-3">
                         <?php
                         $id = $row['imagen'];
                         $imagen = "assets/images/productos/$id";
@@ -73,7 +74,7 @@ $resultado = $sql -> fetchALL(PDO::FETCH_ASSOC);
                             <p class="card-text">$<?php echo number_format($row['precio']);; ?></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="detalles.php?id=<?php echo $row["id"]; ?>&token=<?php echo
+                                    <a href="./view/detalles.php?id=<?php echo $row["id"]; ?>&token=<?php echo
                                     hash_hmac('sha1' , $row['id'], KEY_TOKEN); ?>" class="btn btn-primary">Detalles</a>
                                 </div>
                                 <button class="btn btn-outline-success" type="button"

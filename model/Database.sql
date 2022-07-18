@@ -40,7 +40,7 @@ CREATE TABLE `productos` (
   `imagen` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `id_categoria` int(11) NOT NULL,
   `activo` int(11) NOT NULL
-)
+);
 
 
 

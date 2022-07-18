@@ -1,5 +1,5 @@
 <?php
-require_once "../config/conectar.php";
+require_once "../../model/conectar.php";
 if (isset($_POST)) {
     if (!empty($_POST)) {
         $nombre = $_POST['nombre'];
@@ -16,7 +16,7 @@ if (isset($_POST)) {
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/png" href="../assets/icon.png" />
+    <link rel="icon" type="image/png" href="../../assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,15 +30,15 @@ if (isset($_POST)) {
 
 </head>
 
-<body>
+<body class="bg-dark">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Categorias</h1>
+        <h1 class="h3 mb-0 text-white bg-dark">Categorias</h1>
 
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-                <table class="table table-hover table-bordered" style="width: 100%;">
+                <table class="table table-dark table-hover table-bordered" style="width: 100%;">
                     <thead class="thead-dark">
                         <tr>
                             <th>Id</th>
@@ -94,6 +94,7 @@ if (isset($_POST)) {
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#categorias">
         Nuevo</button>
     <a class="btn btn-secondary" href="productos.php" role="button">Productos</a>
+    <a class="btn btn-secondary" href="compras.php" role="button">Compras</a>
     <a class="btn btn-secondary" href="modificarCategorias.php" role="button">Modificar Categorias</a>
     <a class="btn btn-danger float-end" href="cerrarSesion.php" role="button">Salir</a>
 </body>

@@ -14,7 +14,7 @@ function deleteItem() {
     let id = buttonDelete.value
 
 
-    let url = './classes/actualizarCarrito.php'
+    let url = '../controller/classes/actualizarCarrito.php'
     let formData = new FormData()
     formData.append('action', 'deleteItem')
     formData.append('id', id)

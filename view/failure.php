@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-    <link rel="icon" type="image/png" href="assets/icon.png" />
+    <link rel="icon" type="image/png" href="../assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarHeader">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">Catalogo</a>
+                        <a href="../index.php" class="nav-link active">Catalogo</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Contacto</a>

@@ -1,5 +1,5 @@
 <?php
-require_once "../config/conectar.php";
+require_once "../../model/conectar.php";
 
 if (isset($_POST)) {
     if (!empty($_POST)) {
@@ -12,7 +12,7 @@ if (isset($_POST)) {
         $tmpname = $img['tmp_name'];
         $fecha = date("YmdHis");
         $foto = $fecha . ".jpg";
-        $destino = "../assets/images/productos/" . $foto;
+        $destino = "../../assets/images/productos/" . $foto;
         $activo = 1;
         $sql = $conn ->prepare("INSERT INTO productos(nombre, descripcion, precio, imagen, id_categoria,  activo) VALUES ('$nombre', '$descripcion', '$precio','$foto' ,'$categoria',$activo)");
         $sql->execute();
@@ -28,7 +28,7 @@ if (isset($_POST)) {
 <html lang="en">
 
 <head>
-    <link rel="icon" type="image/png" href="../assets/icon.png" />
+    <link rel="icon" type="image/png" href="../../assets/icon.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,15 +41,15 @@ if (isset($_POST)) {
 
 </head>
 
-<body>
+<body class="bg-dark">
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Productos</h1>
+        <h1 class="h3 mb-0 text-white bg-dark">Productos</h1>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive">
-                <table class="table table-hover table-bordered" style="width: 100%;">
+                <table class="table table-dark table-hover table-bordered" style="width: 100%;">
                     <thead class="thead-dark">
                         <tr>
                             <th>Imagen</th>
@@ -68,9 +68,9 @@ if (isset($_POST)) {
                     foreach($resultado as $row) { ?>
                         <?php
                         $id = $row['imagen'];
-                        $imagen = "../assets/images/productos/$id";
+                        $imagen = "../../assets/images/productos/$id";
                         if (!file_exists($imagen)){
-                            $imagen = "../assets/images/not_found.jpg";
+                            $imagen = "../../assets/images/not_found.jpg";
                         }
                         ?>
                         <tr>
@@ -80,9 +80,10 @@ if (isset($_POST)) {
                             <td><?php echo $row['precio']; ?></td>
                             <td><?php echo $row['categoria']; ?></td>
                             <td>
-                                <form method="post" action="eliminar.php?accion=pro&id=<?php echo $row['id']; ?>"
-                                    class="d-inline eliminar">
-                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                <form method="post"
+                                    action="modificarProductosAccion.php?accion=pro&id=<?php echo $row['id']; ?>&nombre=<?php echo $row['nombre'];?>&descripcion=<?php echo $row['descripcion'];?>&precio=<?php echo $row['precio'] ?>&imagen=<?php echo $row['imagen'] ?>&activo=<?php echo $row['activo'];?>"
+                                    class="d-inline modificar">
+                                    <button class="btn btn-secondary" type="submit">Modificar</button>
                                 </form>
                             </td>
                         </tr>
@@ -152,10 +153,7 @@ if (isset($_POST)) {
             </div>
         </div>
     </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productos">
-        Nuevo</button>
-    <a class="btn btn-secondary" href="categorias.php" role="button">Categorias</a>
-    <a class="btn btn-secondary" href="modificarProductos.php" role="button">Modificar Productos</a>
+    <a class="btn btn-secondary" href="productos.php" role="button">Productos</a>
     <a class="btn btn-danger float-end" href="cerrarSesion.php" role="button">Salir</a>
 </body>
 

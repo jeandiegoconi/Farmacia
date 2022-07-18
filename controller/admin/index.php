@@ -11,10 +11,10 @@ if (!empty($_SESSION['active'])) {
 
                     </div>';
         } else {
-            require_once "../config/conectar.php";
+            require_once "../../model/conectar.php";
             $user =  $_POST['usuario'];
             $clave = md5($_POST['clave']);
-            $sql = $conn ->prepare ("SELECT * FROM usuarios WHERE usuario = '$user' AND clave = '$clave'");
+            $sql = $conn ->prepare ("SELECT * FROM administradores WHERE usuario = '$user' AND clave = '$clave'");
             $sql->execute();
             $resultado = $sql ->fetch(PDO::FETCH_ASSOC);
             if ($resultado > 0) {
