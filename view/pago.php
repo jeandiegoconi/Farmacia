@@ -75,7 +75,7 @@ if($productos != NULL){
                             <a href="#" class="nav-link">Contacto</a>
                         </li>
                     </ul>
-                    <a href="classes/carrito.php" class="btn btn-primary">
+                    <a href="checkout.php" class="btn btn-primary">
                         Carrito<span id="num_carr" class="badge bd-secondary"><?php echo $num_carr; ?></span>
                     </a>
                 </div>
