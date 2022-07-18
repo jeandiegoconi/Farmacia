@@ -29,7 +29,6 @@ if($productos != NULL){
     header("Location: index.php");
     exit;
 }
-print_R($listacarrito);
 
 ?>
 

@@ -38,6 +38,7 @@ require_once "../../model/conectar.php";
                             <th>Tipo Pago</th>
                             <th>Fecha Pago</th>
                             <th>ID de Orden</th>
+                            <th>Total a pagar</th>
                             <th>Entregado</th>
                         </tr>
                     </thead>
@@ -53,6 +54,7 @@ require_once "../../model/conectar.php";
                         <td><?php echo $row['tipo_pago']; ?></td>
                         <td><?php echo $row['fecha_pago']; ?></td>
                         <td><?php echo $row['order_id']; ?></td>
+                        <td><?php echo'$', $row['total']; ?></td>
                         <?php if($row["entregado"] == 1){
                             $resEntrega= '<td class = "table-success">Entregado';}
                             if($row["entregado"] ==0){

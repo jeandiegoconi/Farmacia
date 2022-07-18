@@ -22,7 +22,7 @@ INSERT INTO `administradores` (`id`, `usuario`, `nombre`, `clave`) VALUES
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `categoria` varchar(50) NOT NULL
-) 
+);
 
 INSERT INTO `categorias` (`id`, `categoria`) VALUES
 (1, 'Medicamentos'),
@@ -38,13 +38,14 @@ CREATE TABLE `compra` (
   `tipo_pago` varchar(50) NOT NULL,
   `fecha_pago` varchar(50) NOT NULL,
   `order_id` double NOT NULL,
+  `total` int(11) NOT NULL,
   `entregado` int(11) NOT NULL
 );
 
 
-INSERT INTO `compra` (`id_usuario`, `id_compra`, `estado`, `tipo_pago`, `fecha_pago`, `order_id`, `entregado`) VALUES
-(56, 1297038766, 'approved', 'credit_card', '2022-07-18 08:19:38', 5234861095, 0),
-(57, 1297450011, 'approved', 'credit_card', '2022-07-18 18:59:46', 5237829456, 0);
+INSERT INTO `compra` (`id_usuario`, `id_compra`, `estado`, `tipo_pago`, `fecha_pago`, `order_id`, `total`, `entregado`) VALUES
+(65, 1297496036, 'approved', 'credit_card', '2022-07-18 21:12:01', 5238940745, 0, 0),
+(67, 1297493197, 'approved', 'credit_card', '2022-07-18 21:14:52', 5238977129, 38951, 1);
 
 
 CREATE TABLE `productos` (
