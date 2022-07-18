@@ -54,9 +54,6 @@ if($productos != NULL){
                         <li class="nav-item">
                             <a href="index.php" class="nav-link active">Catalogo</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Contacto</a>
-                        </li>
                     </ul>
                     <a href="checkout.php" class="btn btn-primary">
                         Carrito<span id="num_carr" class="badge bd-secondary"><?php echo $num_carr; ?></span>
