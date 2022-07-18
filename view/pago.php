@@ -159,6 +159,10 @@ if($productos != NULL){
             "success" => "http://localhost/Farmacia/view/captura.php",
             "failure" => "http://localhost/Farmacia/view/failure.php"
         );
+        $preference->payment_methods = array(
+
+            "installments" => 1
+          );
         $preference->save();        
         ?>
 
