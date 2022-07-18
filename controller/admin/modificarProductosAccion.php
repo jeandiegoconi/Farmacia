@@ -3,7 +3,6 @@
 
 
 if (isset($_GET)) {
-    !unlink("../../assets/images/productos/".$_GET['imagen']);
     if (!empty($_GET['accion']) && !empty($_GET['id'])) {
         require_once "../../model/conectar.php";
         $id = $_GET['id'];
@@ -99,7 +98,7 @@ if (isset($_GET)) {
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="imagen">Foto</label>
-                                    <input type="file" class="form-control" name="foto" required>
+                                    <input type="file" class="form-control" name="foto" value="" required>
                                 </div>
                             </div>
                             <div class="col-md-6">

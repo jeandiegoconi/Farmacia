@@ -10,12 +10,12 @@ $payment_type = $_GET['payment_type'];
 $id_orden = $_GET['merchant_order_id'];
 $fecha = date("Y-m-d H:i:s");
 
-echo ($_SESSION)[carrito];
-
 
 $sql = $conn -> prepare("INSERT INTO compra (id_compra, estado, tipo_pago, fecha_pago, order_id, entregado) VALUES($payment_id,'$status','$payment_type','$fecha',$id_orden, 0)");
 $sql -> execute();
 $id = $conn ->lastInsertId();
+
+
 
 ?>
 <!DOCTYPE html>

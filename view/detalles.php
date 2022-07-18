@@ -64,7 +64,7 @@ $get_dir = "../assets/images/productos/$imagen"
     <header>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a href="../index.php" class="navbar-brand">
+                <a href="index.php" class="navbar-brand">
                     <strong>Farmacias EcoProducts</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
@@ -75,7 +75,7 @@ $get_dir = "../assets/images/productos/$imagen"
                 <div class="collapse navbar-collapse" id="navbarHeader">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a href="../index.php" class="nav-link active">Catalogo</a>
+                            <a href="index.php" class="nav-link active">Catalogo</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Contacto</a>
@@ -118,7 +118,7 @@ $get_dir = "../assets/images/productos/$imagen"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 
-    <script src="js/carritoProducto.js"></script>
+    <script src="../js/carritoProducto.js"></script>
 
 </body>
 <footer class="py-5 bg-dark">

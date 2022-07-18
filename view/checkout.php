@@ -1,7 +1,7 @@
 <?php
 require "../model/config.php";
 require "../model/conectar.php";
-
+echo print_r($_SESSION);
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : NULL;
 
 
@@ -42,7 +42,7 @@ if($productos != NULL){
     <header>
         <div class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a href="../index.php" class="navbar-brand">
+                <a href="index.php" class="navbar-brand">
                     <strong>Farmacias EcoProducts</strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
@@ -53,7 +53,7 @@ if($productos != NULL){
                 <div class="collapse navbar-collapse" id="navbarHeader">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a href="../index.php" class="nav-link active">Catalogo</a>
+                            <a href="index.php" class="nav-link active">Catalogo</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Contacto</a>

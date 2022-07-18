@@ -34,7 +34,7 @@ function deleteItem() {
 
 
 function cantidadCarrito(cantidad, id) {
-    let url = './classes/actualizarCarrito.php'
+    let url = '../controller/classes/actualizarCarrito.php'
     let formData = new FormData()
     formData.append('action', 'agregar')
     formData.append('id', id)
