@@ -1,7 +1,6 @@
 <?php
 require "../model/config.php";
 require "../model/conectar.php";
-echo print_r($_SESSION);
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : NULL;
 
 
