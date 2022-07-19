@@ -27,7 +27,6 @@ if (isset($_POST)) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
         integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
     </script>
-
 </head>
 
 <body class="bg-dark">
@@ -66,28 +65,6 @@ if (isset($_POST)) {
                         <?php } ?>
                     </tbody>
                 </table>
-            </div>
-        </div>
-    </div>
-    <div id="categorias" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-gradient-primary text-black">
-                    <h5 class="modal-title" id="title">Nueva Categoria</h5>
-
-                </div>
-                <div class="modal-body">
-                    <form action="" method="POST" autocomplete="off">
-                        <div class="form-group">
-                            <label for="nombre">Nombre</label>
-                            <input id="nombre" class="form-control" type="text" name="nombre" placeholder="Categoria"
-                                required>
-                        </div>
-                        <button class="btn btn-primary" type="submit">Registrar</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </form>
-                </div>
             </div>
         </div>
     </div>

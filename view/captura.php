@@ -34,8 +34,6 @@ $sql -> execute();
 $id = $conn ->lastInsertId();
 
 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">

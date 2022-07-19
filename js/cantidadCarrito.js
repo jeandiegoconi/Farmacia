@@ -1,5 +1,3 @@
-
-
 let deleteModal = document.getElementById('deleteModal')
 deleteModal.addEventListener('show.bs.modal',function(event){
             let button = event.relatedTarget
@@ -31,8 +29,6 @@ function deleteItem() {
         })
     }
 
-
-
 function cantidadCarrito(cantidad, id) {
     let url = '../controller/classes/actualizarCarrito.php'
     let formData = new FormData()
@@ -55,7 +51,6 @@ function cantidadCarrito(cantidad, id) {
                     total += parseFloat(list[i].innerHTML.replace(/[$.]/g, ''))
                 }
                 document.getElementById('total').innerHTML = '$' + total
-
             }
         })
 }

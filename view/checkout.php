@@ -1,11 +1,8 @@
 <?php
 require "../model/config.php";
 require "../model/conectar.php";
+
 $productos = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : NULL;
-
-
-
-
 $listacarrito= array();
 
 if($productos != NULL){
@@ -16,9 +13,7 @@ if($productos != NULL){
         $listacarrito[] = $sql -> fetch(PDO::FETCH_ASSOC);
     }
 }
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -79,9 +74,7 @@ if($productos != NULL){
                     </thead>
                     <tbody>
                         <?php if ($listacarrito == NULL){
-
                         echo '<tr><td colspan="5" class="text-center"><b>Vacio</b></td></tr>';
-
                     }else{
                         $total = 0;
                         foreach($listacarrito as $producto){
@@ -162,5 +155,4 @@ if($productos != NULL){
         <p class="m-0 text-center text-white">Farmacias EcoProductos</p>
     </div>
 </footer>
-
 </html>

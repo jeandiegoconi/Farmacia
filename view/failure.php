@@ -58,9 +58,7 @@
     </div>
 </main>
 <?php
-
 echo "<h4 class=' bg-dark text-center text-white'>Error al realizar el pago.</h4>";
-
 unset($_SESSION['carrito']);
 ?>
 <footer class="py-5 bg-dark">

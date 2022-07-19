@@ -1,5 +1,4 @@
 <?php
-
 require "../model/config.php";
 require "../model/conectar.php";
 
@@ -26,13 +25,11 @@ if($id == '' || $token == '' ){
             $descripcion = $row["descripcion"];
             $precio = $row["precio"];
             $imagen = $row["imagen"];
-
         }
     } else {
         echo "Error";
         exit;
     }
-
 }
 
 $sql = $conn -> prepare("SELECT id, nombre, precio,imagen FROM productos WHERE activo=1");
@@ -104,12 +101,10 @@ $get_dir = "../assets/images/productos/$imagen"
                         <button class="btn btn-outline-primary" type="button"
                             onclick="carritoProducto(<?php echo $id; ?>,'<?php echo $token_tmp;?>')">
                             Agregar al carrito</button>
-
                     </div>
                 </div>
             </div>
     </main>
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
